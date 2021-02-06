@@ -14,6 +14,7 @@
     <PackageReference Include="FlawCraLib2" Version="1.0.0.3" />
     <PackageReference Include="Memory.dll.x64" Version="1.2.21" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Sentry" Version="3.0.3" />
   </ItemGroup>
 
 </Project>

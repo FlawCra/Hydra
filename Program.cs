@@ -1,4 +1,5 @@
 using AutoUpdaterDotNET;
+using Sentry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace Hydra
         [STAThread]
         static void Main()
         {
+            // Init the Sentry SDK
+            SentrySdk.Init("https://b1d3b53271f94c57b7bfd8c1b12d43eb@o373397.ingest.sentry.io/5626105");
+            // Configure WinForms to throw exceptions so Sentry can capture them.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
