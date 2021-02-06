@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>Hydra</RootNamespace>
     <AssemblyName>Hydra</AssemblyName>
+    <ApplicationIcon>Hydra icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

@@ -57,7 +57,7 @@ namespace Hydra
             this.darkButton1.Location = new System.Drawing.Point(7, 493);
             this.darkButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.darkButton1.Name = "darkButton1";
-            this.darkButton1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.darkButton1.Padding = new System.Windows.Forms.Padding(6);
             this.darkButton1.Size = new System.Drawing.Size(99, 27);
             this.darkButton1.TabIndex = 1;
             this.darkButton1.Text = "Unload Cheat";
