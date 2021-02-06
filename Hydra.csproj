@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>Hydra</RootNamespace>
+    <AssemblyName>Hydra</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autoupdater.NET.Official" Version="1.6.4" />
+    <PackageReference Include="DarkUI" Version="2.0.2" />
+    <PackageReference Include="FlawCraLib2" Version="1.0.0.3" />
+    <PackageReference Include="Memory.dll.x64" Version="1.2.21" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>
