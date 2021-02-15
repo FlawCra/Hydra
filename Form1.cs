@@ -5,15 +5,8 @@ using Memory;
 using QuickType;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Security.Permissions;
-using System.Security.Principal;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hydra
@@ -59,8 +52,6 @@ namespace Hydra
             {
                 lockList();
                 CheatListCheat cheat = ((CheatListCheat)listBox1.SelectedItem);
-                try
-                {
                     if (m.OpenProcess(m.GetProcIdFromName(cheat.Procname)))
                     {
                         darkLabel1.Text = cheat.Name;
@@ -106,12 +97,6 @@ namespace Hydra
                         MessageBox.Show(cheat.Name + " Process not found!");
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    unlockList();
-                    new ErrorForm("Error while Injecting into " + cheat.Name + ": ", ex.ToString());
-                }
 
             }
 
