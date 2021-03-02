@@ -20,11 +20,15 @@ namespace Hydra
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if !DEBUG
 
             AutoUpdater.AppCastURL = "https://api.flawcra.cc/fcheatlauncher/updater.php?updater";
             AutoUpdater.AppTitle = "Hydra";
             AutoUpdater.Synchronous = true;
             AutoUpdater.Start();
+
+#endif
+
 
             Application.Run(new Form1());
         }

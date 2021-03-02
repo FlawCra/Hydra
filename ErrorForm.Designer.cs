@@ -32,6 +32,7 @@ namespace Hydra
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorForm));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
+            this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -54,16 +55,27 @@ namespace Hydra
             this.darkButton1.Location = new System.Drawing.Point(12, 224);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(465, 23);
+            this.darkButton1.Size = new System.Drawing.Size(223, 23);
             this.darkButton1.TabIndex = 2;
-            this.darkButton1.Text = "Send to Developer";
+            this.darkButton1.Text = "Try to Recover";
             this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
+            // 
+            // darkButton2
+            // 
+            this.darkButton2.Location = new System.Drawing.Point(254, 224);
+            this.darkButton2.Name = "darkButton2";
+            this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton2.Size = new System.Drawing.Size(223, 23);
+            this.darkButton2.TabIndex = 3;
+            this.darkButton2.Text = "Exit";
+            this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
             // 
             // ErrorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 255);
+            this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.richTextBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -78,5 +90,6 @@ namespace Hydra
         #endregion
         private System.Windows.Forms.RichTextBox richTextBox1;
         private DarkUI.Controls.DarkButton darkButton1;
+        private DarkUI.Controls.DarkButton darkButton2;
     }
 }

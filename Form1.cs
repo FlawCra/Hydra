@@ -74,8 +74,15 @@ namespace Hydra
                             {
                                 while (cheatLoaded)
                                 {
-                                    if (box.Checked)
-                                        m.WriteMemory(c.Address, c.Type, c.Value);
+                                    try
+                                    {
+                                        if (box.Checked)
+                                            m.WriteMemory(c.Address, c.Type, c.Value);
+                                    } catch(Exception exc)
+                                    {
+                                        new ErrorForm(exc);
+                                    }
+                                    
 
                                     Thread.Sleep(1);
                                 }
@@ -91,9 +98,7 @@ namespace Hydra
                     else
                     {
                         unlockList();
-
-
-
+                        
                         MessageBox.Show(cheat.Name + " Process not found!");
                     }
 
