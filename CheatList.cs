@@ -17,11 +17,11 @@ namespace QuickType
 
     public partial class CheatList
     {
-        [JsonProperty("cheats")]
-        public CheatListCheat[] Cheats { get; set; }
+        [JsonProperty("games")]
+        public Game[] Games { get; set; }
     }
 
-    public partial class CheatListCheat
+    public partial class Game
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -30,14 +30,20 @@ namespace QuickType
         public string Procname { get; set; }
 
         [JsonProperty("cheats")]
-        public CheatCheat[] Cheats { get; set; }
+        public Cheat[] Cheats { get; set; }
     }
 
-    public partial class CheatCheat
+    public partial class Cheat
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("addresslist")]
+        public Addresslist[] Addresslist { get; set; }
+    }
+
+    public partial class Addresslist
+    {
         [JsonProperty("type")]
         public string Type { get; set; }
 
@@ -69,5 +75,36 @@ namespace QuickType
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
+    }
+
+    internal class ParseStringConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            long l;
+            if (Int64.TryParse(value, out l))
+            {
+                return l;
+            }
+            throw new Exception("Cannot unmarshal type long");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (long)untypedValue;
+            serializer.Serialize(writer, value.ToString());
+            return;
+        }
+
+        public static readonly ParseStringConverter Singleton = new ParseStringConverter();
     }
 }

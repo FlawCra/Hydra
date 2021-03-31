@@ -34,9 +34,9 @@ namespace Hydra
         {
             cl = CheatList.FromJson(new FCWebRequest("https://api.flawcra.cc/fcheatlauncher/cheatlist/").GetResponse());
             listBox1.DisplayMember = "Name";
-            foreach (CheatListCheat cheat in cl.Cheats)
+            foreach (Game game in cl.Games)
             {
-                listBox1.Items.Add(cheat);
+                listBox1.Items.Add(game);
             }
             CheckForIllegalCrossThreadCalls = false;
         }
@@ -51,12 +51,12 @@ namespace Hydra
             if (listBox1.SelectedItem != null)
             {
                 lockList();
-                CheatListCheat cheat = ((CheatListCheat)listBox1.SelectedItem);
-                    if (m.OpenProcess(m.GetProcIdFromName(cheat.Procname)))
+                Game game = ((Game)listBox1.SelectedItem);
+                    if (m.OpenProcess(m.GetProcIdFromName(game.Procname)))
                     {
-                        darkLabel1.Text = cheat.Name;
+                        darkLabel1.Text = game.Name;
 
-                        foreach (CheatCheat c in cheat.Cheats)
+                        foreach (Cheat c in game.Cheats)
                         {
                             DarkCheckBox box = new DarkCheckBox();
                             box.Text = c.Name;
@@ -77,7 +77,13 @@ namespace Hydra
                                     try
                                     {
                                         if (box.Checked)
-                                            m.WriteMemory(c.Address, c.Type, c.Value);
+                                        {
+                                            foreach (var ch in c.Addresslist)
+                                            {
+                                                m.WriteMemory(ch.Address, ch.Type, ch.Value);
+                                            }
+                                        }
+                                            
                                     } catch(Exception exc)
                                     {
                                         new ErrorForm(exc);
@@ -99,7 +105,7 @@ namespace Hydra
                     {
                         unlockList();
                         
-                        MessageBox.Show(cheat.Name + " Process not found!");
+                        MessageBox.Show(game.Name + " Process not found!");
                     }
 
 
